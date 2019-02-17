@@ -1,4 +1,3 @@
-import moent from 'moment';
 import moment from 'moment';
 
 const filtersReducerDefaultState = {

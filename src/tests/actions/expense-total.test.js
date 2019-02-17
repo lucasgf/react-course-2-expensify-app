@@ -15,3 +15,8 @@
 //   const res = selectExpensesTotal(expenses);
 //   expect(res).toBe(195);
 // })
+
+test('temporary test', () => {
+  const res = 0;
+  expect(res).toBe(0);
+});
