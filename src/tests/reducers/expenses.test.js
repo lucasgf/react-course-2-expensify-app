@@ -1,4 +1,4 @@
- import expensesReducer from '../../reducers/expenses';
+import expensesReducer from '../../reducers/expenses';
 import expenses from '../fixtures/expenses';
 
 test('should set default state', () => {
@@ -26,11 +26,11 @@ test('should not remove expenses if id not found', () => {
 
 test('should add an expense', () => {
   const expense = {
-    id: '4',
-    description: 'Tuition',
+    id: '109',
+    description: 'Laptop',
     note: '',
-    amount: 550000,
-    createdAt: undefined
+    createdAt: 20000,
+    amount: 29500
   };
   const action = {
     type: 'ADD_EXPENSE',
@@ -41,20 +41,26 @@ test('should add an expense', () => {
 });
 
 test('should edit an expense', () => {
+  const amount = 122000;
   const action = {
     type: 'EDIT_EXPENSE',
     id: expenses[1].id,
-    updates: {description: 'Edited description'}
+    updates: {
+      amount
+    }
   };
   const state = expensesReducer(expenses, action);
-  expect(state[1].description).toBe('Edited description');
+  expect(state[1].amount).toBe(amount);
 });
 
-test('should not edit an expense if not found', () => {
+test('should not edit an expense if id not found', () => {
+  const amount = 122000;
   const action = {
     type: 'EDIT_EXPENSE',
     id: '-1',
-    updates: {description: 'Edited description'}
+    updates: {
+      amount
+    }
   };
   const state = expensesReducer(expenses, action);
   expect(state).toEqual(expenses);
